@@ -16,11 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     projectmodel.cpp \
     projectitem.cpp \
-    posterwebpage.cpp
+    posterwebpage.cpp \
+    rendersettingsdialog.cpp
 
 HEADERS  += mainwindow.h \
     projectmodel.h \
     projectitem.h \
-    posterwebpage.h
+    posterwebpage.h \
+    rendersettingsdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    rendersettingsdialog.ui

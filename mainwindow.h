@@ -7,12 +7,11 @@
 #include <QNetworkProxy>
 #include <QGraphicsWebView>
 #include <QtWebKitWidgets/QtWebKitWidgets>
-//#include <QWebPage>
-//#include <QWebFrame>
 #include <QDir>
 
 #include "projectmodel.h"
 #include "posterwebpage.h"
+#include "rendersettingsdialog.h"
 
 
 namespace Ui {
@@ -31,6 +30,7 @@ public slots:
     void render_page();
     void newProject();
     void fontSelection();
+    void openRenderSettingsDialog();
     
 private:
     Ui::MainWindow *ui;

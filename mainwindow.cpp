@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRenderImage,SIGNAL(triggered()),posterwebpage,SLOT(renderImage()));
     connect(ui->actionNew_Project,SIGNAL(triggered()),this,SLOT(newProject()));
     connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
+    connect(ui->actionImage_Rendering,SIGNAL(triggered()),this,SLOT(openRenderSettingsDialog()));
 
     QNetworkProxy proxy;
     proxy.setType(QNetworkProxy::HttpProxy);
@@ -61,6 +62,11 @@ void MainWindow::newProject(){
     {
 
     }
+}
+
+void MainWindow::openRenderSettingsDialog(){
+    RenderSettingsDialog *rendersettingsdialog = new RenderSettingsDialog(this);
+    rendersettingsdialog->show();
 }
 
 void MainWindow::fontSelection(){
