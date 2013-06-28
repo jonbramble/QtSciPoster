@@ -3,7 +3,7 @@
 PosterWebPage::PosterWebPage(QObject *parent) :
     QWebPage(parent)
 {  
-    const int width = 1189; // need to change this for landscape
+    const int width = 841; // need to change this for landscape
     this->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     this->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     //this->setViewportSize(QSize(width,(1/1.4)*width));  //landscape
@@ -17,7 +17,6 @@ PosterWebPage::~PosterWebPage(){
 }
 
 void PosterWebPage::renderImage(){
-
     QProgressDialog progress("Rendering Image","Abort Render",0,100);
     progress.setWindowModality(Qt::WindowModal);
     progress.setValue(0);
