@@ -24,7 +24,7 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QTabWidget" name="tabWidget">
@@ -35,28 +35,8 @@
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
-        <widget class="QWidget" name="tabHTML">
-         <attribute name="title">
-          <string>HTML</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="HtmlDocument" name="textEditHTML"/>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabCSS">
-         <attribute name="title">
-          <string>CSS</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="CssDocument" name="textEditCSS"/>
-          </item>
-         </layout>
-        </widget>
         <widget class="QWidget" name="tabWeb">
          <attribute name="title">
           <string>WebView</string>
@@ -87,16 +67,6 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0">
-     <widget class="QTreeView" name="treeView">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -114,12 +84,6 @@
     </property>
     <addaction name="actionNew_Project"/>
     <addaction name="actionOpen_Project"/>
-    <addaction name="separator"/>
-    <addaction name="actionOpenHTML"/>
-    <addaction name="actionSaveHTML"/>
-    <addaction name="separator"/>
-    <addaction name="actionOpen_CSS"/>
-    <addaction name="actionSave_CSS"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -278,7 +242,9 @@
   </action>
   <action name="actionOpen_CSS">
    <property name="icon">
-    <iconset theme="document-open"/>
+    <iconset theme="document-open">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Open CSS</string>
@@ -286,7 +252,9 @@
   </action>
   <action name="actionSave_CSS">
    <property name="icon">
-    <iconset theme="document-save"/>
+    <iconset theme="document-save">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Save CSS</string>
@@ -294,7 +262,9 @@
   </action>
   <action name="actionEditor_Settings">
    <property name="icon">
-    <iconset theme="preferences-desktop-font"/>
+    <iconset theme="preferences-desktop-font">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Editor Settings</string>
@@ -306,17 +276,7 @@
   <customwidget>
    <class>QWebView</class>
    <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
-  </customwidget>
-  <customwidget>
-   <class>HtmlDocument</class>
-   <extends>QTextEdit</extends>
-   <header>htmldocument.h</header>
-  </customwidget>
-  <customwidget>
-   <class>CssDocument</class>
-   <extends>QTextEdit</extends>
-   <header>cssdocument.h</header>
+   <header>QtWebKitWidgets/QWebView</header>
   </customwidget>
  </customwidgets>
  <resources/>

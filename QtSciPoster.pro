@@ -14,15 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    htmldocument.cpp \
-    cssdocument.cpp \
     projectmodel.cpp \
     projectitem.cpp \
     posterwebpage.cpp
 
 HEADERS  += mainwindow.h \
-    htmldocument.h \
-    cssdocument.h \
     projectmodel.h \
     projectitem.h \
     posterwebpage.h

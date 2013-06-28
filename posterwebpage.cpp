@@ -6,10 +6,8 @@ PosterWebPage::PosterWebPage(QObject *parent) :
     const int width = 1189;
     this->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     this->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
-    this->setViewportSize(QSize(width,(1/1.4)*width));  //landscape
-    //this->setViewportSize(QSize(width,1.4*width));  //portrait
-
-    //this->settings()->setFontFamily(QWebSettings::SansSerifFont,"Helvetica");
+    //this->setViewportSize(QSize(width,(1/1.4)*width));  //landscape
+    this->setViewportSize(QSize(width,1.4*width));  //portrait
 
     qreal zoom = 7;              //this is poster size in inches * target dpi
     this->mainFrame()->setZoomFactor(zoom);
@@ -20,7 +18,7 @@ PosterWebPage::~PosterWebPage(){
 
 void PosterWebPage::renderImage(){
     // taken from webcapture qt graphics-dojo
-    qDebug() << "render image";
+    qDebug() << "Rendering image...";
 
     QSize size = this->mainFrame()->contentsSize();
     image = new QImage(size,QImage::Format_ARGB32_Premultiplied); // check what this is

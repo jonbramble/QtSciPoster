@@ -9,49 +9,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     posterwebpage = new PosterWebPage();
     connect(ui->actionRenderPage,SIGNAL(triggered()),this,SLOT(render_page()));
-    connect(ui->actionOpenHTML,SIGNAL(triggered()),ui->textEditHTML,SLOT(fileOpen()));
-    connect(ui->actionSaveHTML,SIGNAL(triggered()),ui->textEditHTML,SLOT(fileSave()));
     connect(ui->actionRenderImage,SIGNAL(triggered()),posterwebpage,SLOT(renderImage()));
-
-    connect(ui->actionOpen_CSS, SIGNAL(triggered()),ui->textEditCSS,SLOT(fileOpen()));
-    connect(ui->actionSave_CSS, SIGNAL(triggered()),ui->textEditCSS,SLOT(fileSave()));
-
     connect(ui->actionNew_Project,SIGNAL(triggered()),this,SLOT(newProject()));
     connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
 
-     ui->tabWidget->setCurrentWidget(ui->tabHTML);
+    QNetworkProxy proxy;
+    proxy.setType(QNetworkProxy::HttpProxy);
+    proxy.setHostName("www-cache.leeds.ac.uk");
+    proxy.setPort(3128);
+    QNetworkProxy::setApplicationProxy(proxy);
 
-     //ui->webView->load(QUrl("http://localhost:3000"));
+    ui->webView->page()->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
+    inspector = new QWebInspector;
+    inspector->setPage(ui->webView->page());
+    inspector->setVisible(false);
 
-     ui->webView->page()->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
-
-     QNetworkProxy proxy;
-
-     proxy.setType(QNetworkProxy::HttpProxy);
-     proxy.setHostName("www-cache.leeds.ac.uk");
-     proxy.setPort(3128);
-
-     QNetworkProxy::setApplicationProxy(proxy);
-
-     inspector = new QWebInspector;
-     inspector->setPage(ui->webView->page());
-     inspector->setVisible(true);
-
-
-     ui->webView->show();
+    ui->webView->show();
 
 
 }
 
 void MainWindow::render_page(){
-    QString html = ui->textEditHTML->toPlainText();
-    QUrl base = QUrl::fromLocalFile(filename);
-    //QUrl base = QUrl("http://localhost/peptide_poster/poster.html",QUrl::TolerantMode);
-    qDebug() << filename;
 
-    //ui->webView->setHtml(html,base);             // set the document txt
+    //QUrl base = QUrl::fromLocalFile(filename);
+    QUrl base = QUrl("http://localhost/catgrid/catgrid.html",QUrl::TolerantMode);
+    //qDebug() << filename;
+
+
     ui->webView->load(base);
-    //posterwebpage->mainFrame()->setHtml(html,base);
     posterwebpage->mainFrame()->load(base);
     ui->tabWidget->setCurrentWidget(ui->tabWeb);
 }
@@ -80,7 +65,6 @@ void MainWindow::newProject(){
 
 void MainWindow::fontSelection(){
     // need to know which form I'm on
-
 }
 
 MainWindow::~MainWindow()
