@@ -3,7 +3,7 @@
 PosterWebPage::PosterWebPage(QObject *parent) :
     QWebPage(parent)
 {  
-    const int width = 1189;
+    const int width = 1189; // need to change this for landscape
     this->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     this->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     //this->setViewportSize(QSize(width,(1/1.4)*width));  //landscape
@@ -17,9 +17,13 @@ PosterWebPage::~PosterWebPage(){
 }
 
 void PosterWebPage::renderImage(){
-    // taken from webcapture qt graphics-dojo
-    qDebug() << "Rendering image...";
 
+    QProgressDialog progress("Rendering Image","Abort Render",0,100);
+    progress.setWindowModality(Qt::WindowModal);
+    progress.setValue(0);
+    progress.show();
+
+    // taken from webcapture qt graphics-dojo
     QSize size = this->mainFrame()->contentsSize();
     image = new QImage(size,QImage::Format_ARGB32_Premultiplied); // check what this is
     image->fill(Qt::transparent);
@@ -32,17 +36,18 @@ void PosterWebPage::renderImage(){
     this->mainFrame()->render(&p);
     p.end();
 
-#if QT_VERSION < 0x040500
+    #if QT_VERSION < 0x040500
     // scale, since we don't have full page zoom
     qreal factor = static_cast<qreal>(m_zoom) / 100.0;
     image = image.scaled(size * factor, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-#endif
+    #endif
 
     image->save("/home/DS/phyjpb/test.png");
     //image->save("/home/jon/test.png");
     //emit finished();
 
     delete image;
-    qDebug() << "... render complete";
+
+    progress.setValue(100);
 
 }

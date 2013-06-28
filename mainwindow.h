@@ -29,7 +29,6 @@ public:
 public slots:
     void render_page();
     void newProject();
-    void fontSelection();
     void openRenderSettingsDialog();
     
 private:
@@ -37,6 +36,7 @@ private:
     QWebInspector *inspector;
     ProjectModel *model;
     PosterWebPage *posterwebpage;
+
 
     QDir starting_dir;
     QString filename;

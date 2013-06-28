@@ -5,6 +5,7 @@
 #include <QWebFrame>
 #include <QDebug>
 #include <QPainter>
+#include <QProgressDialog>
 #include <tr1/functional>
 
 class PosterWebPage : public QWebPage

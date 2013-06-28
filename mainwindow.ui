@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>QtWebPoster</string>
+   <string>QtSciPoster</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -92,7 +92,6 @@
      <string>Settings</string>
     </property>
     <addaction name="actionImage_Rendering"/>
-    <addaction name="actionEditor_Settings"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">

@@ -36,10 +36,10 @@ void MainWindow::render_page(){
     QUrl base = QUrl("http://localhost/catgrid/catgrid.html",QUrl::TolerantMode);
     //qDebug() << filename;
 
-
     ui->webView->load(base);
     posterwebpage->mainFrame()->load(base);
     ui->tabWidget->setCurrentWidget(ui->tabWeb);
+
 }
 
 void MainWindow::newProject(){
@@ -69,9 +69,6 @@ void MainWindow::openRenderSettingsDialog(){
     rendersettingsdialog->show();
 }
 
-void MainWindow::fontSelection(){
-    // need to know which form I'm on
-}
 
 MainWindow::~MainWindow()
 {
